@@ -1,0 +1,19 @@
+{
+  "packageInfo": {
+    "devDependencies": {
+      "@commitlint/cli": "^12.1.4",
+      "@commitlint/config-conventional": "^12.1.4",
+      "commitizen": "^4.2.4",
+      "conventional-changelog-cli": "^2.1.1",
+      "cz-conventional-changelog": "^3.3.0"
+    }
+  },
+  "input": {
+    "checkFiles": ["commitlint.config.js"],
+    "templateFiles": ["commitlint.config.js"],
+    "config": null
+  },
+  "output": {
+    "files": ["commitlint.config.js"]
+  }
+}

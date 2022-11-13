@@ -12,7 +12,8 @@ export enum Plugin {
   EslintReactTs = 'eslint-react-ts', // react + ts 的eslint插件
   TsNodeEsm = 'ts-node-esm', // tsconfig的esm环境开发
   StylelintLess = 'stylelint-less', // stylelint
-  Prettier = 'prettier' // prettier配置
+  Prettier = 'prettier', // prettier配置
+  CommitLint = 'commit-lint' // commitLint配置
 }
 
 export type Source = 'repo'
@@ -40,15 +41,12 @@ export interface AppItem {
   appPath: string
   app: App
   appType: AppType
-  source: Source // app来源是repo还是当前lerna项目其他目录
+  source: 'repo' | 'template'
 }
 
 export interface PluginItem {
   title: string
   plugin: Plugin
-  // pluginType: 'eslint' | 'stylelint' | 'tsconfig'
-  // package: 'eslint-config-cookie' | 'stylelint-config-cookie'
-  // source: 'npm' | 'packages' // 下载来源是npm或是其他
 }
 
 export interface QuestionItem {
@@ -59,11 +57,17 @@ export interface QuestionItem {
 }
 
 export interface PluginConfigJson {
-  config: AnyOptions
-  checkFiles: string[]
-  devDependencies?: AnyOptions
-  dependencies?: AnyOptions
+  packageInfo: {
+    devDependencies?: AnyOptions
+    dependencies?: AnyOptions
+    scripts?: AnyOptions
+  }
+  input: {
+    checkFiles: string[]
+    templateFiles: string[]
+    config?: AnyOptions | null
+  }
   output: {
-    file: '.prettierrc'
+    files: string[]
   }
 }

@@ -25,5 +25,13 @@ export const PLUGINS: PluginItem[] = [
   {
     title: 'Eslint + React + ts',
     plugin: Plugin.EslintReactTs
+  },
+  {
+    title: 'commit-lint',
+    plugin: Plugin.CommitLint
+  },
+  {
+    title: 'tsconfig-node-esm',
+    plugin: Plugin.TsNodeEsm
   }
 ]

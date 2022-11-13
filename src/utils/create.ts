@@ -11,7 +11,7 @@ import { CreateParams, DownloadAppParams } from '../types/index.js'
 import { Plugin } from './../types/index.js'
 import { createPlugin } from './plugin.js'
 
-import { filePathExist, copyFiles } from './index.js'
+import { filePathExist, copyFile } from './index.js'
 
 const DEFAULT_CREATE_PATH = process.cwd()
 const spinner = ora()
@@ -104,7 +104,7 @@ const downloadFromPackages = async ({ localPath = '', templatePath = '' }) => {
   const spinner = ora('正在拉取模板~').start()
   spinner.color = 'yellow'
   try {
-    await copyFiles(templatePath, localPath)
+    await copyFile(templatePath, localPath)
     spinner.color = 'green'
     spinner.succeed(`${chalk.blue('拉取模板成功！')}`)
   } catch (e) {

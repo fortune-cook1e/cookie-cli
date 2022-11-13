@@ -4,7 +4,7 @@
     "es6": true,
     "node": true
   },
-  "extends": ["alloy", "alloy/react", "alloy/typescript"],
+  "extends": ["alloy", "alloy/typescript"],
   "plugins": ["import"],
   "rules": {
     "import/order": [

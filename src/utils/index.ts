@@ -16,6 +16,10 @@ const execSync = childProcess.execSync
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+export const hasProperty = (target: AnyOptions, key: string) =>
+  // eslint-disable-next-line prefer-object-has-own
+  Object.prototype.hasOwnProperty.call(target, key)
+
 export const checkCurrentNodeVersion = (wanted: string): void => {
   if (!semver.satisfies(process.version, wanted)) {
     console.log(
@@ -277,18 +281,13 @@ export const filePathExist = async (filePath: string, canDelete = false): Promis
 }
 
 /**
- * @description 复制文件夹
- * @param {*} targetFiles 目标文件夹地址
- * @param {*} souceFiles 需要复制的文件夹地址
- * @date 2022-04-23 15:37:44
+ * @description 复制文件
+ * @date 2022-11-13 16:03:27
  */
-export const copyFiles = async (targetFiles: string, souceFiles: string): Promise<void> => {
-  try {
-    await fs.copy(souceFiles, targetFiles)
-  } catch (e) {
-    console.log(e)
-    process.exit(1)
-  }
+export const copyFile = (source: string, dest: string) => {
+  return fs.copySync(source, dest, {
+    overwrite: false
+  })
 }
 
 /**
@@ -326,28 +325,26 @@ export const writeJson = ({
 }
 
 /**
- * @description 将依赖合并到 package.json中
- * @param {*} isDev 是否为开发依赖
- * @param {*} dependencies 需要合并的依赖
- * @date 2022-10-11 16:24:19
- * @return {object} pkg
+ * @description 根据key值合并对象
+ * @param {*} originObj
+ * @param {*} targetObj
+ * @param {*} mergeKeys
+ * @date 2022-11-13 15:41:51
+ * @return {AnyOptions}
  */
-export const mergePkgDependencies = ({ dependencies = {}, isDev = true }) => {
-  if (!dependencies) return
-  const pgkPath = path.resolve(process.cwd(), './package.json')
+export const mergeObject = ({ originObj, targetObj, mergeKeys = [] }) => {
+  if (!mergeKeys || !originObj || !targetObj) return
 
-  if (!pgkPath) {
-    chalk.red('package.json 文件不存在')
-    process.exit(1)
-  }
-  const originPkg = readJson(pgkPath)
-  let dependenciesKey = isDev ? 'devDependencies' : 'dependencies'
-  let newPkg = {
-    ...originPkg,
-    [dependenciesKey]: {
-      ...originPkg[dependenciesKey],
-      ...dependencies
+  const newObj = mergeKeys.reduce((obj, key) => {
+    if (!hasProperty(originObj, key) || !hasProperty(targetObj, key)) return obj
+    return {
+      ...targetObj,
+      [key]: {
+        ...targetObj[key],
+        ...originObj[key]
+      }
     }
-  }
-  return newPkg
+  }, {})
+
+  return newObj
 }
