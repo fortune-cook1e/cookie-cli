@@ -21,6 +21,7 @@ specifiers:
   minimist: ^1.2.6
   ora: ^6.1.2
   prettier: ^2.7.1
+  rimraf: ^3.0.2
   semver: ^7.3.8
   typescript: ^4.7.4
 
@@ -48,6 +49,7 @@ devDependencies:
   eslint-plugin-import: 2.26.0_jnohwm7eexgw7uduhweedcbnpe
   eslint-plugin-prettier: 4.2.1_v7o5sx5x3wbs57ifz6wc4f76we
   prettier: 2.7.1
+  rimraf: 3.0.2
   typescript: 4.8.4
 
 packages:
