@@ -1,7 +1,7 @@
 {
-  "name": "cookie-cli",
+  "name": "cookies-cli",
   "version": "1.0.2",
-  "description": "cookie'cli",
+  "description": "cookie's cli",
   "type": "module",
   "license": "MIT",
   "author": "fortune cookie <767077147@qq.com>",
