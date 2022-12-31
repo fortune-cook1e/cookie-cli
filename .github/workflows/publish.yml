@@ -21,8 +21,8 @@ jobs:
           version: 7
           run_install: false
       - name: Install dependencies and build 🔧
-        run: pnpm install && pnpm run build
+        run: pnpm install && pnpm compiler
       - name: Publish package on NPM 📦
-        run: npm publish
+        run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
