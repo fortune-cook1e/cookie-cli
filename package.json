@@ -5,6 +5,10 @@
   "type": "module",
   "license": "MIT",
   "author": "fortune_cookie",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fortune-cook1e/cookie-cli.git"
+  },
   "bin": {
     "cookie": "bin/cookie.js"
   },
