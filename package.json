@@ -1,6 +1,6 @@
 {
   "name": "cookie-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "cookie'cli",
   "type": "module",
   "license": "MIT",
@@ -8,10 +8,10 @@
   "bin": {
     "cookie": "bin/cookie.js"
   },
-  "main": "./dist/src/index.js",
-  "module": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
-  "exports": "./dist/src/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
   "scripts": {
     "dev": "rimraf dist && tsc -w",
     "compiler": "rimraf dist && tsc",
