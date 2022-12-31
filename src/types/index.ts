@@ -13,7 +13,8 @@ export enum Plugin {
   TsNodeEsm = 'ts-node-esm', // tsconfig的esm环境开发
   StylelintLess = 'stylelint-less', // stylelint
   Prettier = 'prettier', // prettier配置
-  CommitLint = 'commit-lint' // commitLint配置
+  CommitLint = 'commit-lint', // commitLint配置
+  TsconfigReact = 'tsconfig-react' // tsconfig react配置
 }
 
 export type Source = 'repo'

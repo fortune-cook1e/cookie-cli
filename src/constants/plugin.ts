@@ -33,5 +33,9 @@ export const PLUGINS: PluginItem[] = [
   {
     title: 'tsconfig-node-esm',
     plugin: Plugin.TsNodeEsm
+  },
+  {
+    title: 'tsconfig-react',
+    plugin: Plugin.TsconfigReact
   }
 ]

@@ -1,29 +1,32 @@
 {
-  "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
-    "target": "es2016",
-    "module": "NodeNext",
-    "lib": [
-      "ES2020"
-    ],
-    "moduleResolution": "NodeNext",
-    "noImplicitOverride": true,
-    "noUnusedLocals": false,
-    "esModuleInterop": true,
-    "useUnknownInCatchVariables": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": false,
-    "declaration": true,
-    "resolveJsonModule": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "strict": true,
+    "target": "ESNext",
     "outDir": "./dist",
-    "skipLibCheck": true
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
-  "include": [
-    "src/**/*",
-    "package.json",
-    "src/**/*.json"
+  "typeRoots": [
+    "node_modules/@types"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist",
+    "build"
   ]
 }

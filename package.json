@@ -13,7 +13,6 @@
   "types": "./dist/src/index.d.ts",
   "exports": "./dist/src/index.js",
   "scripts": {
-    "start": "rimraf dist && tsc -w",
     "dev": "rimraf dist && tsc -w",
     "compiler": "rimraf dist && tsc",
     "publih": "pnpm public --access public",
