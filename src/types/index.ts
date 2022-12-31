@@ -14,7 +14,9 @@ export enum Plugin {
   StylelintLess = 'stylelint-less', // stylelint
   Prettier = 'prettier', // prettier配置
   CommitLint = 'commit-lint', // commitLint配置
-  TsconfigReact = 'tsconfig-react' // tsconfig react配置
+  TsconfigReact = 'tsconfig-react', // tsconfig react配置
+  BabelReactApp = 'babel-react-app', // babel 普通项目配置
+  BabelReactLibrary = 'babel-react-library' // babel react库
 }
 
 export type Source = 'repo'

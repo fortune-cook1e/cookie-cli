@@ -75,7 +75,7 @@ export function createPlugin(plugin: Plugin) {
     const createdByConfig = !!config
 
     // 输出文件
-    // FIXME: 这里需要注意 输出js文件时 文件末尾会出现 export {}
+    // FixMe: 这里需要注意 输出js文件时 文件末尾会出现 export {}
     const createdFileNamesStr = files.join(',')
 
     if (createdByConfig) {
@@ -90,6 +90,7 @@ export function createPlugin(plugin: Plugin) {
         const templateFilePath = path.resolve(__dirname, `../configs/${plugin}/${file}`)
         const createFilename = files[index]
         const createPath = DEFAULT_CREATE_PATH + `/${createFilename}`
+        console.log('creat path..', { createPath, templateFilePath })
         copyFile(templateFilePath, createPath)
       })
     }

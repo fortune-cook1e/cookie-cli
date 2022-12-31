@@ -37,5 +37,13 @@ export const PLUGINS: PluginItem[] = [
   {
     title: 'tsconfig-react',
     plugin: Plugin.TsconfigReact
+  },
+  {
+    title: 'babel-react-app',
+    plugin: Plugin.BabelReactApp
+  },
+  {
+    title: 'babel-react-library',
+    plugin: Plugin.BabelReactLibrary
   }
 ]

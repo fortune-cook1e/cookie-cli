@@ -9,11 +9,12 @@
     }
   },
   "input": {
-    "checkFiles": ["commitlint.config.js"],
-    "templateFiles": ["commitlint.config.js"],
-    "config": null
+    "checkFiles": ["commitlint.config.js", ".commitlintrc"],
+    "config": {
+      "extends": ["@commitlint/config-conventional"]
+    }
   },
   "output": {
-    "files": ["commitlint.config.js"]
+    "files": [".commitlintrc"]
   }
 }
