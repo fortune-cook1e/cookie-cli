@@ -14,12 +14,23 @@ Cooki's CLI helps you create application or plugin fast.
 
 
 ## Install
+
 ```javascript
-npm install -g cookies-cli or yarn install global cookies-cli or pnpm install global cookies-cli
+npm install -g cookie-cli 
+or yarn install global cookie-cli
+or pnpm install global cookie-cli
 ```
 
-### Usege
+## Usege
+
+### Create a react application
+
 ```javascript
 cookie create app-name
+```
+
+### Create a plugin file
+
+```javascript
 cookie plugin
 ```
