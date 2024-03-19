@@ -18,7 +18,7 @@
   "exports": "./dist/index.js",
   "scripts": {
     "dev": "rimraf dist && tsc -w",
-    "compiler": "rimraf dist && tsc",
+    "compile": "rimraf dist && tsc",
     "lint": "eslint src --ext .js,.ts --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
