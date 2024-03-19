@@ -97,7 +97,7 @@ export const installPackages = async ({
       console.log(chalk.red(`\`${command} ${(args as string[]).join(' ')}\` failed`))
     }
   } catch (e: any) {
-    console.log(chalk.yellow(e.message || '安装依赖失败'))
+    console.log(chalk.yellow(e.message || 'installing dependencies failed'))
     process.exit(1)
   }
 }
@@ -319,7 +319,7 @@ export const writeJson = ({
 }) => {
   const existed = filePathExist(writePath, true)
   if (!existed && !cover) {
-    throw new Error(`输出Json文件失败，${writePath}已存在`)
+    throw new Error(`Failed to output the json file.${writePath} already existed`)
   }
   return fs.writeFileSync(writePath, JSON.stringify(writeData, null, 2), 'utf-8')
 }
@@ -336,7 +336,7 @@ export const mergeObject = ({ originObj, targetObj, mergeKeys = [] }) => {
   if (!mergeKeys || !originObj || !targetObj) return
 
   const newObj = mergeKeys.reduce((obj, key) => {
-    if (!hasProperty(originObj, key) || !hasProperty(targetObj, key)) return obj
+    if (!hasProperty(originObj, key) && !hasProperty(targetObj, key)) return obj
     return {
       ...targetObj,
       [key]: {

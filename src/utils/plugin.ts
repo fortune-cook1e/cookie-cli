@@ -23,7 +23,7 @@ const DEFAULT_CREATE_PATH = process.cwd()
  * @return {PluginConfigJson}
  */
 function getPluginConfigJson(plugin: Plugin): PluginConfigJson {
-  const configJsonPath = path.resolve(__dirname, `../configs/${plugin}/config.json`)
+  const configJsonPath = path.resolve(__dirname, `../../configs/${plugin}/config.json`)
   return readJson(configJsonPath)
 }
 
@@ -32,15 +32,15 @@ function checkConfigFiles(plugin: Plugin, checkFiles: string[]) {
   const hasPkg = checkFileIfExists([PKG_JSON])
   const file = checkFileIfExists(checkFiles)
   if (!hasPkg) {
-    throw new Error(`${PKG_JSON} 文件不存在`)
+    throw new Error(`${PKG_JSON} not existing`)
   }
   if (file) {
-    throw new Error(`${file} 已存在`)
+    throw new Error(`${file} already existed`)
   }
 }
 
 /**
- * @description 创建插件
+ * @description Create plugin
  * @param {Plugin} plugin
  * @date 2022-10-16 18:11:15
  * @return {void}
@@ -59,11 +59,16 @@ export function createPlugin(plugin: Plugin) {
   try {
     const originPackage = readJson(originPkgPath)
 
+    // combine keys
+    const mergeKeys = Array.from(
+      new Set([...Object.keys(packageInfo), ...Object.keys(originPackage)])
+    )
+
     // 1. 先合并package.json 并重新覆盖package.json
     const newPackage = mergeObject({
       originObj: packageInfo,
       targetObj: originPackage,
-      mergeKeys: Object.keys(packageInfo)
+      mergeKeys
     })
     writeJson({
       writePath: originPkgPath,
@@ -79,7 +84,7 @@ export function createPlugin(plugin: Plugin) {
     const createdFileNamesStr = files.join(',')
 
     if (createdByConfig) {
-      let filename = files[0] || 'unknown-name'
+      let filename = files[0] || 'unknown-plugin-name'
       const createPath = path.resolve(DEFAULT_CREATE_PATH, filename)
       writeJson({
         writePath: createPath,
@@ -95,7 +100,7 @@ export function createPlugin(plugin: Plugin) {
       })
     }
 
-    spinner.succeed(`创建 ${chalk.blue(createdFileNamesStr)} 文件成功`)
+    spinner.succeed(`Create ${chalk.blue(createdFileNamesStr)} successfully`)
   } catch (e) {
     console.log({ e })
     throw new Error(e)

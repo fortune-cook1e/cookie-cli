@@ -30,14 +30,14 @@ export async function create({
         createName,
         app
       })
-      spinner.succeed(chalk.blue('创建应用成功'))
+      spinner.succeed(chalk.blue('Create application successfully'))
     } else {
       spinner.start(`begin to create the ${plugin} plugin`)
       createPlugin(plugin)
-      spinner.succeed(`创建 ${chalk.blue(plugin)} 插件成功`)
+      spinner.succeed(`Create ${chalk.blue(plugin)} plugin successfully`)
     }
   } catch (e) {
-    spinner.fail(`创建失败:${chalk.red(e.message || e.msg || '未知错误')},${plugin}`)
+    spinner.fail(`Failed to create:${chalk.red(e.message || e.msg || 'unknown error')},${plugin}`)
     process.exit(1)
   }
 }
@@ -87,29 +87,29 @@ const downloadApp = async ({
 const downloadFromRepo = ({ repoPath = '', templatePath = '' }) => {
   return new Promise((resolve, reject) => {
     spinner.color = 'yellow'
-    spinner.text = '正在拉取仓库模板~'
+    spinner.text = 'Pulling~'
     const name = path.basename(templatePath)
     download(repoPath, name, err => {
       if (err) {
-        spinner.fail(chalk.red('拉取远程模板仓库失败！'))
+        spinner.fail(chalk.red('Failed to pull remote template'))
         reject(err)
       }
       resolve('')
-      spinner.succeed(`${chalk.blue('拉取远程模板仓库成功！')}`)
+      spinner.succeed(`${chalk.blue('Pull remote template successfully')}`)
     })
   })
 }
 
 const downloadFromPackages = async ({ localPath = '', templatePath = '' }) => {
-  const spinner = ora('正在拉取模板~').start()
+  const spinner = ora('Pulling remote template~').start()
   spinner.color = 'yellow'
   try {
     await copyFile(templatePath, localPath)
     spinner.color = 'green'
-    spinner.succeed(`${chalk.blue('拉取模板成功！')}`)
+    spinner.succeed(`${chalk.blue('Pulling successfully')}`)
   } catch (e) {
     spinner.color = 'red'
-    spinner.fail(chalk.red('拉取模板失败！'))
+    spinner.fail(chalk.red('Failed to pull'))
     process.exit(1)
   }
 }

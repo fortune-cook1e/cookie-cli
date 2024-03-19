@@ -1,6 +1,6 @@
 {
   "name": "cookie-cli",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "cookie's cli",
   "type": "module",
   "license": "MIT",
@@ -24,7 +24,8 @@
   },
   "files": [
     "dist",
-    "bin"
+    "bin",
+    "configs"
   ],
   "keywords": [
     "react",
