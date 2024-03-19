@@ -15,11 +15,12 @@ jobs:
         with:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Setup Pnpm
-        uses: pnpm/action-setup@646cdf48217256a3d0b80361c5a50727664284f2
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3 # docs https://pnpm.io/continuous-integration#github-actions
         with:
-          version: 7
-          run_install: false
+          version: 8 # Optional: specify a pnpm version
+
       - name: Install dependencies and build 🔧
         run: pnpm install && pnpm compile
       - name: Publish package on NPM 📦
